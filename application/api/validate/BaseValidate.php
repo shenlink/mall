@@ -10,7 +10,7 @@ use app\api\exception\ParameterException;
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-25 10:50:44
+ * @LastEditTime: 2020-06-25 10:55:28
  */
 
 class BaseValidate extends Validate
@@ -70,6 +70,22 @@ class BaseValidate extends Validate
         } else {
 
             return true;
+        }
+    }
+
+    /**
+     * @msg: 自定义验证规则 验证正整数
+     * @param {type} mixed
+     * @return: bool
+     */
+    protected function positiveInteger($value)
+    {
+        if (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) {
+
+            return true;
+        } else {
+
+            return false;
         }
     }
 }
