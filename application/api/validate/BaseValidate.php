@@ -10,7 +10,7 @@ use app\api\exception\ParameterException;
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-25 10:56:25
+ * @LastEditTime: 2020-06-25 10:57:40
  */
 
 class BaseValidate extends Validate
@@ -100,6 +100,22 @@ class BaseValidate extends Validate
             return false;
         } else {
             return true;
+        }
+    }
+
+    /**
+     * @msg: 自定义验证规则 验证手机号
+     * @param {type} mixed
+     * @return: bool
+     */
+    protected function isMobile($value)
+    {
+        $rule = '^1(3|4|5|7|8)[0-9]\d{8}$^';
+        $result = preg_match($rule, $value);
+        if ($result) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
