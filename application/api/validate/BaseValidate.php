@@ -10,7 +10,7 @@ use app\api\exception\ParameterException;
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-25 10:55:28
+ * @LastEditTime: 2020-06-25 10:56:25
  */
 
 class BaseValidate extends Validate
@@ -86,6 +86,20 @@ class BaseValidate extends Validate
         } else {
 
             return false;
+        }
+    }
+
+/**
+     * @msg: 自定义验证规则 验证不能为空值
+     * @param {type} mixed
+     * @return: bool
+     */
+    protected function isNotEmpty($value, $rule = '', $data = '', $field = '')
+    {
+        if (empty($value)) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
