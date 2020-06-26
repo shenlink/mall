@@ -4,13 +4,14 @@ namespace app\api\validate;
 
 use think\Validate;
 use app\api\exception\ParameterException;
+use think\Request;
 
 /*
  * @Description:验证器基类
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-26 10:01:00
+ * @LastEditTime: 2020-06-26 10:02:08
  */
 
 class BaseValidate extends Validate
@@ -20,8 +21,11 @@ class BaseValidate extends Validate
      * @param {type}
      * @return: mixed
      */
-    public function checkParams($params)
+    public function checkParams()
     {
+        // 获取http参数
+        $params = Request::instance()->param();
+
         // $this就是validate对象 因为类继承了Validate
         $result = $this->batch()->check($params);
 
