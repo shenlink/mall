@@ -9,13 +9,14 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
+/*
+ * @Description:路由
+ * @Author: shenlink
+ * @Date: 2020-06-24 20:52:56
+ * @LastEditors: shenlink
+ * @LastEditTime: 2020-06-26 09:34:59
+ */
 
-];
+use think\Route;
+
+Route::get('api/:version/banner/:id', 'api/:version.Banner/getBanner');
