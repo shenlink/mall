@@ -9,7 +9,7 @@ use app\api\validate\ValueNotNull;
  * @Author: shenlink
  * @Date: 2020-06-24 22:49:26
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-26 11:54:11
+ * @LastEditTime: 2020-06-26 11:43:15
  */
 
 class Banner extends Base
@@ -25,5 +25,21 @@ class Banner extends Base
     public function bannerItem()
     {
         return $this->hasMany('BannerItem', 'banner_id', 'id');
+    }
+
+    /**
+     * @msg:获取数据
+     * @param {type}
+     * @return:json
+     */
+    public static function getBannerById($id)
+    {
+        // 查询数据
+        $banner = self::with(['bannerItem', 'bannerItem.image'])->find($id);
+
+        // 如果记录不存在，抛出异常
+        ValueNotNull::checkMiss($banner);
+
+        return $banner;
     }
 }
