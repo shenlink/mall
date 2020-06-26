@@ -10,7 +10,7 @@ use app\api\exception\ParameterException;
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-26 09:57:44
+ * @LastEditTime: 2020-06-26 10:01:00
  */
 
 class BaseValidate extends Validate
@@ -22,13 +22,6 @@ class BaseValidate extends Validate
      */
     public function checkParams($params)
     {
-        // 判断http参数是否过多
-        if (count($params) <= 1) {
-            throw new ParameterException([
-                'msg' => '参数过少',
-            ]);
-        }
-
         // $this就是validate对象 因为类继承了Validate
         $result = $this->batch()->check($params);
 
