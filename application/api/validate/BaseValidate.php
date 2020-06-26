@@ -10,40 +10,11 @@ use app\api\exception\ParameterException;
  * @Author: shenlink
  * @Date: 2020-06-24 22:18:56
  * @LastEditors: shenlink
- * @LastEditTime: 2020-06-25 10:57:40
+ * @LastEditTime: 2020-06-26 09:57:44
  */
 
 class BaseValidate extends Validate
 {
-    /**
-     * @msg: 验证单个参数
-     * @param {type}
-     * @return: mixed
-     */
-    public function checkParam($param)
-    {
-        // 判断http参数是否过多
-        if (count($param) > 1) {
-            throw new ParameterException([
-                'msg' => '参数过多',
-            ]);
-        }
-
-        // $this就是validate对象 因为类继承了Validate
-        $result = $this->check($param);
-
-        if (!$result) {
-
-            // 如果参数校验不通过 进行异常处理
-            throw new ParameterException([
-                'msg' => $this->error,
-            ]);
-        } else {
-
-            return true;
-        }
-    }
-
     /**
      * @msg: 批量验证参数
      * @param {type}
